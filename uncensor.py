@@ -8,17 +8,17 @@ dictionnaire = csv.reader(tsv_file, delimiter="\t")
 dico= []
 
 for row in dictionnaire:
-    ligne = []
+    word = []
     for i in range(35):
-        ligne.append(str(row[i]))
-        
-    dico.append(ligne)
+        word.append(str(row[i]))
+    dico.append(word)
+    
 tsv_file.close()
 
 
-def trouve_mot(WSEARCH,TYPE):
+def uncensor(WSEARCH,TYPE):
     'Renvoie une liste de mots ressemblant'
-    #AUX, ADJ, ADV, ART, CON, LIA, NOM, ONO, PRE, PRO, VER
+    #TYPE : AUX, ADJ, ADV, ART, CON, LIA, NOM, ONO, PRE, PRO, VER
     similaire = []
 
     for WORD in dico:
@@ -34,5 +34,5 @@ def trouve_mot(WSEARCH,TYPE):
                 similaire.append(WORD[0])
     return(similaire)
 
-##>>> trouve_mot("b**j**r",'ALL')
+##>>> uncensor("b**j**r",'ALL')
 ##['bonjour']
