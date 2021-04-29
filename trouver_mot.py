@@ -13,20 +13,12 @@ for row in dictionnaire:
         ligne.append(str(row[i]))
         
     dico.append(ligne)
-#tsv_file.close()
+tsv_file.close()
 
-def ty():
-    TYPES = []
-    for word in dico:
-        list_type = word[28].split(',')
-        for e in list_type:
-            if not(e in TYPES):
-                TYPES.append(e)
-    return(TYPES)
 
 def trouve_mot(WSEARCH,TYPE):
-    'sea*ch, ADJ;NOM;VER;ADV;AUX;PRE;ONO:CON'
-    #ONOmatopée, ADJectif, ADVerbe, VERbe, AUXiliaire...
+    'Renvoie une liste de mots ressemblant'
+    #AUX, ADJ, ADV, ART, CON, LIA, NOM, ONO, PRE, PRO, VER
     similaire = []
 
     for WORD in dico:
@@ -41,28 +33,6 @@ def trouve_mot(WSEARCH,TYPE):
             if SIM ==1:
                 similaire.append(WORD[0])
     return(similaire)
-            
-            
 
-def lettre(mot):
-    les_lettres = []
-    mots_valides = []
-    for c in mot:
-        les_lettres.append(c)
-    perm = permutations(les_lettres) 
-    les_perm = []
-    for p in perm:
-        les_perm.append(p)
-    
-    for permutation in les_perm:
-        mot_permute = ''
-        for c in permutation:
-            mot_permute += c
-        
-        if mot_permute in dico:
-            mots_valides.append(mot_permute)
-
-    return (mots_valides)
-
-# Print the obtained permutations 
-
+##>>> trouve_mot("b**j**r",'ALL')
+##['bonjour']
